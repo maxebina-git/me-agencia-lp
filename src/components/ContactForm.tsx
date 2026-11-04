@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, AlertCircle, Loader2 } from "lucide-react";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -44,6 +44,10 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [touched, setTouched] = useState<Partial<Record<Field, boolean>>>({});
   const [status, setStatus] = useState<Status>("idle");
+  const renderedAt = useRef<number>(0);
+  useEffect(() => {
+    renderedAt.current = Date.now();
+  }, []);
 
   const inputClass = (field: Field) =>
     `w-full px-4 py-3 rounded-xl bg-[var(--surface-card-secondary)] border text-[var(--text-on-surface)] placeholder-[var(--text-on-surface-subtle)] focus:ring-1 outline-none transition-all ${
@@ -87,7 +91,7 @@ export default function ContactForm() {
       const response = await fetch("/send-email.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ ...fields, website }),
+        body: new URLSearchParams({ ...fields, website, elapsed_ms: String(Date.now() - renderedAt.current) }),
       });
       const data: { ok?: boolean } | null = await response.json().catch(() => null);
       if (response.ok && data?.ok) {
