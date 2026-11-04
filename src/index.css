@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@import "./styles/max-ds.css";
+@import "@maxebina/max-ds/styles.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
