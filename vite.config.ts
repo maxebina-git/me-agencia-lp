@@ -11,8 +11,8 @@ export default defineConfig(({ command }) => {
   const local = command === 'serve' && fs.existsSync(path.join(lpath, 'dist/index.mjs'))
   const alias: Record<string, string> = local
     ? {
-        '@maxebina/max-ds': path.join(lpath, 'dist/index.mjs'),
         '@maxebina/max-ds/styles.css': path.join(lpath, 'dist/max-ds.css'),
+        '@maxebina/max-ds': path.join(lpath, 'dist/index.mjs'),
       }
     : {}
 
