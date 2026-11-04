@@ -63,8 +63,6 @@ declare module "@maxebina/max-ds" {
   }
   export const FAQ: (props: FAQProps) => ReactNode;
 
-  export const LeadCaptureForm: () => ReactNode;
-
   export interface FooterLink {
     title: string;
     items: { label: string; href: string }[];

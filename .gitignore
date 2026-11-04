@@ -1,3 +1,8 @@
+# Local-only PHP/mail assets (credenciais SMTP - nunca commitar)
+/send-email.php
+/mail-config.php
+/PHPMailer/
+
 # Logs
 logs
 *.log

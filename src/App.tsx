@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Navbar, HeroSection, SectionHeader, ServiceCard, 
-TestimonialCard, AnimatedCounter, FAQ, LeadCaptureForm, Footer, WhatsAppFloat } from 
+import { Navbar, HeroSection, SectionHeader, ServiceCard,
+TestimonialCard, AnimatedCounter, FAQ, Footer, WhatsAppFloat } from
 "./components/ds-components";
+import ContactForm from "./components/ContactForm";
 import { Layout, TrendingUp, Star, Clock } from "lucide-react";
 
 const links = [
@@ -112,7 +113,7 @@ export default function App() {
           <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
         </div>
         <div className="max-w-lg mx-auto relative z-10">
-          <LeadCaptureForm />
+          <ContactForm />
         </div>
       </section>
 
