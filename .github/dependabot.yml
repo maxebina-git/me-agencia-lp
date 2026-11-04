@@ -4,8 +4,8 @@ updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
-      interval: daily
-      time: "07:00"
+      interval: cron
+      cronjob: "0 8,13,17,22 * * *"
       timezone: "America/Sao_Paulo"
     allow:
       - dependency-name: "@maxebina/max-ds"
