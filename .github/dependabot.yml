@@ -1,0 +1,12 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "07:00"
+      timezone: "America/Sao_Paulo"
+    allow:
+      - dependency-name: "@maxebina/max-ds"
+    open-pull-requests-limit: 3
