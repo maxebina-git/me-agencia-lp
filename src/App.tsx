@@ -45,10 +45,11 @@ export default function App() {
       />
 
       <HeroSection
-        headline="Transforme seu negócio com tecnologia e automação"
-        subheadline="Sites, LPs, CRM e tráfego pago que geram resultados reais para sua empresa."
-        ctaPrimary="Quero escalar meu negócio"
-        ctaSecondary="Ver casos de sucesso"
+        headline={<>Transforme Sua Empresa com <span className="gradient-text-tech">Tecnologia</span></>}
+        headlineText="Transforme Sua Empresa com Tecnologia"
+        subheadline="Sites, LPs e CRM que geram resultados reais. Escalabilidade com inteligência digital para o seu negócio crescer."
+        ctaPrimary="Quero Escalar Meu Negócio"
+        ctaSecondary="Ver Cases"
         ctaPrimaryHref="#contato"
         ctaSecondaryHref="#cases"
       />
