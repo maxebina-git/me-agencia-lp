@@ -9,4 +9,7 @@ updates:
       timezone: "America/Sao_Paulo"
     allow:
       - dependency-name: "@maxebina/max-ds"
+    cooldown:
+      exclude:
+        - "@maxebina/max-ds"
     open-pull-requests-limit: 3
