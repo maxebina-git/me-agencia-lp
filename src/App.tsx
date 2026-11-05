@@ -46,7 +46,6 @@ export default function App() {
 
       <HeroSection
         headline="Transforme Sua Empresa com Tecnologia"
-        headlineText="Transforme Sua Empresa com Tecnologia"
         subheadline="Sites, LPs e CRM que geram resultados reais. Escalabilidade com inteligência digital para o seu negócio crescer."
         ctaPrimary="Quero Escalar Meu Negócio"
         ctaSecondary="Ver Cases"
