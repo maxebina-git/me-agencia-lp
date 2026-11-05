@@ -45,12 +45,15 @@ export default function App() {
       />
 
       <HeroSection
-        headline="Transforme seu negócio com tecnologia e automação"
-        subheadline="Sites, LPs, CRM e tráfego pago que geram resultados reais para sua empresa."
-        ctaPrimary="Quero escalar meu negócio"
-        ctaSecondary="Ver casos de sucesso"
+        headline={<>Transforme Sua Empresa com <span className="gradient-text-tech">Tecnologia</span></>}
+        headlineText="Transforme Sua Empresa com Tecnologia"
+        subheadline="Sites, LPs e CRM que geram resultados reais. Escalabilidade com inteligência digital para o seu negócio crescer."
+        ctaPrimary="Quero Escalar Meu Negócio"
+        ctaSecondary="Ver Cases"
         ctaPrimaryHref="#contato"
         ctaSecondaryHref="#cases"
+        logo={<svg width="60" height="29" viewBox="0 0 182 87" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M182 19.333H116V33.833H182V53.167H116V67.667H182V87H111.837L95 70.7246V16.2754L111.837 0H182V19.333Z" fill="#8f6424"></path><path d="M67.667 87V21H53.167L53.167 87H33.833L33.833 21H19.333L19.333 87H0L3.06693e-06 16.8369L16.2754 0L70.7246 2.38005e-06L87 16.8369V87H67.667Z" fill="#8f6424"></path></svg>}
+        logoText="Marketing Digital"
       />
 
       <section id="servicos" className="py-24 px-6 bg-bg-dark">
@@ -66,7 +69,7 @@ export default function App() {
             <ServiceCard title="SaaS" description="Plataformas web sob medida para escalar seu modelo de negócio." icon="Code2" ctaText="Saiba mais" href="#saas" />
             <ServiceCard title="CRM" description="Gestão inteligente de clientes e automação de vendas." icon="Bot" ctaText="Saiba mais" href="#crm" />
             <ServiceCard title="Tráfego Pago" description="Investimento estratégico em mídia com ROI mensurável." icon="Megaphone" ctaText="Saiba mais" href="#trafego" />
-            <ServiceCard title="Automa��o WhatsApp" description="Fluxos automatizados que vendem 24h por dia." icon="Workflow" badge="Novo" ctaText="Saiba mais" href="#automacao" />
+            <ServiceCard title="Automação WhatsApp" description="Fluxos automatizados que vendem 24h por dia." icon="Workflow" badge="Novo" ctaText="Saiba mais" href="#automacao" />
           </div>
         </div>
       </section>
