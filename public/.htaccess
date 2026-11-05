@@ -1,0 +1,8 @@
+# Fallback SPA para URLs limpas (ex.: /servicos, /prova-social, /faq, /contato)
+# Sem isto, apertar F5 com URL limpa retorna 404 no host estático (FTP).
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [L]
+</IfModule>
