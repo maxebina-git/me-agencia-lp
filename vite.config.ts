@@ -3,7 +3,6 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
 
 const lpath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../me-agencia-ds')
 
@@ -17,7 +16,7 @@ export default defineConfig(({ command }) => {
     : {}
 
   return {
-    plugins: [react(), tailwindcss()],
+    plugins: [react()],
     resolve: { alias },
     build: {
       rolldownOptions: {},

@@ -5,6 +5,13 @@ TestimonialCard, AnimatedCounter, FAQ, Footer, WhatsAppFloat } from
 import ContactForm from "./components/ContactForm";
 import { Layout, TrendingUp, Star, Clock } from "lucide-react";
 
+const heroLogo = (
+  <svg width="60" height="29" viewBox="0 0 182 87" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M182 19.333H116V33.833H182V53.167H116V67.667H182V87H111.837L95 70.7246V16.2754L111.837 0H182V19.333Z" fill="#8f6424" />
+    <path d="M67.667 87V21H53.167L53.167 87H33.833L33.833 21H19.333L19.333 87H0L3.06693e-06 16.8369L16.2754 0L70.7246 2.38005e-06L87 16.8369V87H67.667Z" fill="#8f6424" />
+  </svg>
+);
+
 const links = [
   { label: "Serviços", href: "#servicos" },
   { label: "Prova Social", href: "#prova-social" },
@@ -14,6 +21,19 @@ const links = [
 
 export default function App() {
   const [modalService, setModalService] = useState<string | null>(null);
+
+  const handleFooterLinkClick = (label: string, href: string) => {
+    if (href.startsWith('#')) {
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.location.pathname !== `/`) window.history.pushState(null, "", `/${id}`);
+        return;
+      }
+    }
+    setModalService(label);
+  };
 
   useEffect(() => {
     const handleLogoClick = (e: MouseEvent) => {
@@ -45,12 +65,13 @@ export default function App() {
       />
 
       <HeroSection
-        headline="Transforme Sua Empresa com Tecnologia"
-        subheadline="Sites, LPs e CRM que geram resultados reais. Escalabilidade com inteligência digital para o seu negócio crescer."
+        headline={<>Transforme Sua Empresa com <span className="gradient-text-tech">Tecnologia</span></>}
+        headlineText="Transforme Sua Empresa com Tecnologia"
         ctaPrimary="Quero Escalar Meu Negócio"
-        ctaSecondary="Ver Cases"
         ctaPrimaryHref="#contato"
-        ctaSecondaryHref="#cases"
+        logo={heroLogo}
+        logoText="Marketing Digital"
+        eyebrow=""
       />
 
       <section id="servicos" className="py-24 px-6 bg-bg-dark">
@@ -151,6 +172,7 @@ export default function App() {
         ]}
         social={[]}
         copyright="© 2026 Max Ebina. Todos os direitos reservados."
+        onLinkClick={handleFooterLinkClick}
       />
 
       <WhatsAppFloat />

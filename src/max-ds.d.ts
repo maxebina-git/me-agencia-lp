@@ -10,12 +10,16 @@ declare module "@maxebina/max-ds" {
   export const Navbar: (props: NavbarProps) => ReactNode;
 
   export interface HeroSectionProps {
-    headline: string;
+    headline: ReactNode;
     subheadline?: string;
     ctaPrimary: string;
     ctaSecondary?: string;
     ctaPrimaryHref?: string;
     ctaSecondaryHref?: string;
+    headlineText?: string;
+    logo?: ReactNode;
+    logoText?: string;
+    eyebrow?: ReactNode;
   }
   export const HeroSection: (props: HeroSectionProps) => ReactNode;
 
@@ -72,6 +76,7 @@ declare module "@maxebina/max-ds" {
     links?: FooterLink[];
     social?: { platform: string; href: string; icon: ReactNode }[];
     copyright?: string;
+    onLinkClick?: (label: string, href: string) => void;
   }
   export const Footer: (props: FooterProps) => ReactNode;
 
