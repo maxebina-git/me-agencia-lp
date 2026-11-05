@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navbar, HeroSection, SectionHeader, ServiceCard,
-TestimonialCard, AnimatedCounter, FAQ, Footer, WhatsAppFloat } from
+TestimonialCard, AnimatedCounter, FAQ, Footer, WhatsAppFloat, ScrollToTop, Modal, Drawer } from
 "./components/ds-components";
 import ContactForm from "./components/ContactForm";
 import { Layout, TrendingUp, Star, Clock } from "lucide-react";
@@ -12,17 +12,135 @@ const heroLogo = (
   </svg>
 );
 
+const SHOW_TESTIMONIALS = false;
+
 const links = [
   { label: "Serviços", href: "#servicos" },
   { label: "Prova Social", href: "#prova-social" },
-  { label: "Depoimentos", href: "#depoimentos" },
+  ...(SHOW_TESTIMONIALS ? [{ label: "Depoimentos", href: "#depoimentos" }] : []),
   { label: "FAQ", href: "#faq" },
 ];
 
+const WHATSAPP_PHONE = "5511971610688";
+const WHATSAPP_MESSAGE_DEFAULT = "Olá! Vim pelo site";
+
+export type ServiceId = "sites" | "landing-pages" | "saas" | "crm" | "trafego" | "automacao";
+
+interface ServiceInfo {
+  id: ServiceId;
+  title: string;
+  description: string;
+  icon: string;
+  badge?: string;
+  details: string[];
+}
+
+const services: ServiceInfo[] = [
+  {
+    id: "sites",
+    title: "Sites Institucionais",
+    description: "Presença digital profissional que converte visitantes em clientes.",
+    icon: "Globe",
+    badge: "Popular",
+    details: ["Design moderno e responsivo em todos os dispositivos", "Carregamento rápido e SEO otimizado", "Formulários e CTAs que direcionam para contato", "Hospedagem, domínio e suporte inclusos"],
+  },
+  {
+    id: "landing-pages",
+    title: "Landing Pages",
+    description: "Páginas de alta conversão para campanhas de tráfego pago.",
+    icon: "Layout",
+    badge: "+40% leads",
+    details: ["Copy persuasiva focada em conversão", "Carregamento ultrarrápido para anúncios", "Testes A/B e rastreamento completos", "Integração com CRM e pixels"],
+  },
+  {
+    id: "saas",
+    title: "SaaS",
+    description: "Plataformas web sob medida para escalar seu modelo de negócio.",
+    icon: "Code2",
+    details: ["Arquitetura escalável e segura", "Painel administrativo completo", "Planos, billing e automações", "Suporte e evolução contínua"],
+  },
+  {
+    id: "crm",
+    title: "CRM",
+    description: "Gestão inteligente de clientes e automação de vendas.",
+    icon: "Bot",
+    details: ["Funil de vendas visual e automatizado", "Lembretes e follow-ups inteligentes", "Relatórios e previsões de receita", "Integrações com WhatsApp e e-mail"],
+  },
+  {
+    id: "trafego",
+    title: "Tráfego Pago",
+    description: "Investimento estratégico em mídia com ROI mensurável.",
+    icon: "Megaphone",
+    details: ["Gestão de campanhas no Meta e Google Ads", "Segmentação precisa do público ideal", "Relatórios claros de retorno", "Otimização contínua de criativos"],
+  },
+  {
+    id: "automacao",
+    title: "Automação WhatsApp",
+    description: "Fluxos automatizados que vendem 24h por dia.",
+    icon: "Workflow",
+    badge: "Novo",
+    details: ["Atendimento automático 24h por dia", "Qualificação de leads sem esforço", "Mensagens personalizadas por etapa", "Integração com CRM e pagamentos"],
+  },
+];
+
+const whatsappHref = (title: string) =>
+  `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(`Olá! Tenho interesse em ${title}`)}`;
+
+export type LegalDocId = "privacidade" | "termos" | "cookies";
+
+interface LegalDoc {
+  title: string;
+  description: string;
+  disclaimer: string;
+  sections: { heading: string; body: string }[];
+}
+
+const legalDocs: Record<LegalDocId, LegalDoc> = {
+  privacidade: {
+    title: "Política de Privacidade",
+    description: "Como tratamos seus dados pessoais quando você navega neste site ou fala com a gente pelo formulário e pelo WhatsApp.",
+    disclaimer: "Texto resumido para fins ilustrativos — versão oficial deve ser validada por advogado.",
+    sections: [
+      { heading: "Dados que coletamos", body: "Nome, telefone/WhatsApp, e-mail e mensagem que você envia voluntariamente pelo formulário de contato ou pelo botão de WhatsApp. Também registramos dados de navegação essenciais (páginas visitadas, dispositivo) apenas para segurança e melhoria do site." },
+      { heading: "Como usamos", body: "Usamos esses dados somente para responder seu contato, enviar propostas, prestar o serviço contratado e cumprir obrigações legais. Não vendemos seus dados para terceiros." },
+      { heading: "Seus direitos", body: "Você pode pedir acesso, correção ou exclusão dos seus dados a qualquer momento pelo WhatsApp ou e-mail da agência. Respondemos em até 15 dias úteis." },
+    ],
+  },
+  termos: {
+    title: "Termos de Uso",
+    description: "As regras básicas para usar este site e contratar os serviços da Max Ebina.",
+    disclaimer: "Texto resumido para fins ilustrativos — versão oficial deve ser validada por advogado.",
+    sections: [
+      { heading: "O site", body: "O conteúdo (textos, imagens, código e marca) é de propriedade da Max Ebina. Você pode navegar e compartilhar links, mas não copiar ou reutilizar o material sem autorização." },
+      { heading: "Serviços", body: "Prazos, valores e escopo de cada projeto são definidos em proposta comercial individual. O uso deste site não substitui o contrato de prestação de serviços." },
+      { heading: "Responsabilidades", body: "Fazemos nosso melhor para manter o site no ar e as informações atualizadas, mas não garantimos funcionamento ininterrupto nem nos responsabilizamos por danos decorrentes de uso indevido ou de terceiros." },
+    ],
+  },
+  cookies: {
+    title: "Cookies",
+    description: "O que são cookies, para que servem e como você pode controlá-los.",
+    disclaimer: "Texto resumido para fins ilustrativos — versão oficial deve ser validada por advogado.",
+    sections: [
+      { heading: "Cookies essenciais", body: "São necessários para o site funcionar (ex.: manter sua navegação entre páginas). Não podem ser desativados aqui." },
+      { heading: "Cookies de análise", body: "Ajudam a entender quais páginas são mais visitadas e melhorar o conteúdo. São anônimos e agregados — não identificam você." },
+      { heading: "Como gerenciar", body: "Você pode apagar ou bloquear cookies nas configurações do seu navegador. Se bloquear os essenciais, partes do site podem parar de funcionar." },
+    ],
+  },
+};
+
 export default function App() {
   const [modalService, setModalService] = useState<string | null>(null);
+  const [legalDoc, setLegalDoc] = useState<LegalDocId | null>(null);
+  const selectedLegal = legalDoc ? legalDocs[legalDoc] : null;
+  const selectedService = modalService ? services.find((s) => s.title === modalService) ?? null : null;
+  const modalTitle = selectedService?.title ?? modalService;
+  const modalDetails = selectedService?.details ?? ["Solução sob medida para o seu momento.", "Fale com um especialista e receba uma proposta personalizada."];
 
   const handleFooterLinkClick = (label: string, href: string) => {
+    if (href === "#privacidade" || href === "#termos" || href === "#cookies") {
+      setLegalDoc(href.slice(1) as LegalDocId);
+      return;
+    }
     if (href.startsWith('#')) {
       const id = href.slice(1);
       const target = document.getElementById(id);
@@ -36,6 +154,24 @@ export default function App() {
   };
 
   useEffect(() => {
+    const scrollToCurrentPath = (behavior: ScrollBehavior = "smooth") => {
+      const path = window.location.pathname;
+      const idFromPath = path.replace(/^\//, "").split("/")[0];
+      const idFromHash = window.location.hash ? window.location.hash.slice(1) : "";
+      const id = idFromPath || idFromHash;
+      const target = id ? document.getElementById(id) : null;
+      if (target) {
+        target.scrollIntoView({ behavior, block: "start" });
+      } else if (!id) {
+        window.scrollTo({ top: 0, behavior });
+      }
+    };
+
+    scrollToCurrentPath("auto");
+
+    const handlePopState = () => scrollToCurrentPath();
+    window.addEventListener("popstate", handlePopState);
+
     const handleLogoClick = (e: MouseEvent) => {
       const anchor = (e.target as HTMLElement).closest('a[href^="#"]');
       if (!anchor) return;
@@ -52,7 +188,10 @@ export default function App() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
     document.addEventListener("click", handleLogoClick);
-    return () => document.removeEventListener("click", handleLogoClick);
+    return () => {
+      document.removeEventListener("click", handleLogoClick);
+      window.removeEventListener("popstate", handlePopState);
+    };
   }, []);
 
   return (
@@ -71,10 +210,10 @@ export default function App() {
         ctaPrimaryHref="#contato"
         logo={heroLogo}
         logoText="Marketing Digital"
-        eyebrow=""
+        eyebrow="Tecnologia que gera resultado"
       />
 
-      <section id="servicos" className="py-24 px-6 bg-bg-dark">
+      <section id="servicos" className="scroll-mt-24 py-24 px-6 bg-bg-dark">
         <div className="max-w-6xl mx-auto">
           <SectionHeader
             eyebrow="Nossos Serviços"
@@ -82,17 +221,17 @@ export default function App() {
             subtitle="Cada serviço é pensado para acelerar o crescimento do seu negócio com tecnologia de ponta."
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ServiceCard title="Sites Institucionais" description="Presença digital profissional que converte visitantes em clientes." badge="Popular" icon="Globe" ctaText="Saiba mais" href="#sites" />
-            <ServiceCard title="Landing Pages" description="Páginas de alta conversão para campanhas de tráfego pago." icon="Layout" badge="+40% leads" ctaText="Saiba mais" href="#landing-pages" />
-            <ServiceCard title="SaaS" description="Plataformas web sob medida para escalar seu modelo de negócio." icon="Code2" ctaText="Saiba mais" href="#saas" />
-            <ServiceCard title="CRM" description="Gestão inteligente de clientes e automação de vendas." icon="Bot" ctaText="Saiba mais" href="#crm" />
-            <ServiceCard title="Tráfego Pago" description="Investimento estratégico em mídia com ROI mensurável." icon="Megaphone" ctaText="Saiba mais" href="#trafego" />
-            <ServiceCard title="Automação WhatsApp" description="Fluxos automatizados que vendem 24h por dia." icon="Workflow" badge="Novo" ctaText="Saiba mais" href="#automacao" />
+            <ServiceCard title="Sites Institucionais" description="Presença digital profissional que converte visitantes em clientes." badge="Popular" icon="Globe" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Sites Institucionais")} />
+            <ServiceCard title="Landing Pages" description="Páginas de alta conversão para campanhas de tráfego pago." badge="+40% leads" icon="Layout" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Landing Pages")} />
+            <ServiceCard title="SaaS" description="Plataformas web sob medida para escalar seu modelo de negócio." icon="Code2" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("SaaS")} />
+            <ServiceCard title="CRM" description="Gestão inteligente de clientes e automação de vendas." icon="Bot" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("CRM")} />
+            <ServiceCard title="Tráfego Pago" description="Investimento estratégico em mídia com ROI mensurável." icon="Megaphone" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Tráfego Pago")} />
+            <ServiceCard title="Automação WhatsApp" description="Fluxos automatizados que vendem 24h por dia." badge="Novo" icon="Workflow" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Automação WhatsApp")} />
           </div>
         </div>
       </section>
 
-      <section id="prova-social" className="py-24 px-6 bg-bg-dark-secondary">
+      <section id="prova-social" className="scroll-mt-24 py-24 px-6 bg-bg-dark-secondary">
         <div className="max-w-4xl mx-auto">
           <SectionHeader eyebrow="Prova Social" title="Números que Falam" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -104,18 +243,20 @@ export default function App() {
         </div>
       </section>
 
-      <section id="depoimentos" className="py-24 px-6 bg-bg-dark">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeader eyebrow="Depoimentos" title="O que Nossos Clientes Dizem" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <TestimonialCard name="Carlos Mendes" company="TechStart" role="CEO" rating={5} testimonial="A Max Ebina transformou completamente nossa presença digital. Em 3 meses, triplicamos os leads qualificados." />
-            <TestimonialCard name="Ana Silva" company="ModaFit" role="Diretora" rating={5} testimonial="A automação de WhatsApp economiza 4 horas por dia da minha equipe. Resultado incrível!" />
-            <TestimonialCard name="Roberto Lima" company="Construmax" role="Gerente" rating={4} testimonial="O CRM que desenvolveram é intuitivo e poderoso. Nossa taxa de conversão subiu 60%." />
+      {SHOW_TESTIMONIALS && (
+        <section id="depoimentos" className="scroll-mt-24 py-24 px-6 bg-bg-dark">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader eyebrow="Depoimentos" title="O que Nossos Clientes Dizem" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <TestimonialCard name="Carlos Mendes" company="TechStart" role="CEO" rating={5} testimonial="A Max Ebina transformou completamente nossa presença digital. Em 3 meses, triplicamos os leads qualificados." />
+              <TestimonialCard name="Ana Silva" company="ModaFit" role="Diretora" rating={5} testimonial="A automação de WhatsApp economiza 4 horas por dia da minha equipe. Resultado incrível!" />
+              <TestimonialCard name="Roberto Lima" company="Construmax" role="Gerente" rating={4} testimonial="O CRM que desenvolveram é intuitivo e poderoso. Nossa taxa de conversão subiu 60%." />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section id="faq" className="py-24 px-6 bg-bg-dark">
+      <section id="faq" className="scroll-mt-24 py-24 px-6 bg-bg-dark">
         <div className="max-w-2xl mx-auto">
           <SectionHeader eyebrow="Dúvidas Frequentes" title="Perguntas e Respostas" />
           <FAQ items={[
@@ -128,7 +269,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contato" className="py-24 px-6 bg-gradient-to-br from-bg-dark via-bg-dark-secondary to-bg-dark relative overflow-hidden">
+      <section id="contato" className="scroll-mt-24 py-24 px-6 bg-gradient-to-br from-bg-dark via-bg-dark-secondary to-bg-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-tech/10 rounded-full blur-3xl" />
           <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
@@ -152,40 +293,51 @@ export default function App() {
               { label: "Automação WhatsApp", href: "#automacao" },
             ],
           },
-          {
-            title: "Empresa",
-            items: [
-              { label: "Sobre Nós", href: "#sobre" },
-              { label: "Cases", href: "#cases" },
-              { label: "Blog", href: "#blog" },
-              { label: "Contato", href: "#contato" },
-            ],
-          },
-          {
-            title: "Legal",
-            items: [
-              { label: "Privacidade", href: "#privacidade" },
-              { label: "Termos de Uso", href: "#termos" },
-              { label: "Cookies", href: "#cookies" },
-            ],
-          },
         ]}
+        linksClassName="lg:col-start-5"
         social={[]}
         copyright="© 2026 Max Ebina. Todos os direitos reservados."
         onLinkClick={handleFooterLinkClick}
       />
 
-      <WhatsAppFloat />
+      <WhatsAppFloat phone={WHATSAPP_PHONE} message={WHATSAPP_MESSAGE_DEFAULT} />
+      <ScrollToTop targetId="servicos" />
 
-      {modalService && (
-        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-6" onClick={() => setModalService(null)}>
-          <div className="bg-white dark:bg-bg-dark rounded-2xl p-8 max-w-md shadow-2xl" onClick={e => e.stopPropagation()}>
-            <h3 className="text-xl font-display font-bold mb-2">{modalService}</h3>
-            <p className="text-sm text-[var(--text-on-surface-muted)] mb-4">Detalhes do serviço selecionado.</p>
-            <button onClick={() => setModalService(null)} className="px-4 py-2 rounded-xl bg-tech text-white font-semibold">Fechar</button>
+      <Modal
+        open={!!modalService}
+        onClose={() => setModalService(null)}
+        title={modalTitle ?? ""}
+        size="md"
+        actions={[
+          { label: "Falar no WhatsApp", href: modalTitle ? whatsappHref(modalTitle) : "#", variant: "primary", target: "_blank" },
+          { label: "Fechar", variant: "secondary", onClick: () => setModalService(null) },
+        ]}
+      >
+        <ul className="space-y-2 text-sm leading-relaxed list-disc list-inside">
+          {modalDetails.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))}
+        </ul>
+      </Modal>
+
+      <Drawer
+        open={!!legalDoc}
+        onClose={() => setLegalDoc(null)}
+        title={selectedLegal?.title ?? ""}
+        description={selectedLegal?.description ?? ""}
+        disclaimer={selectedLegal?.disclaimer ?? ""}
+        width="lg"
+        actions={[
+          { label: "Fechar", variant: "secondary", onClick: () => setLegalDoc(null) },
+        ]}
+      >
+        {selectedLegal?.sections.map((section) => (
+          <div key={section.heading}>
+            <h4 className="font-display font-semibold text-white mb-1">{section.heading}</h4>
+            <p>{section.body}</p>
           </div>
-        </div>
-      )}
+        ))}
+      </Drawer>
     </>
   );
 }

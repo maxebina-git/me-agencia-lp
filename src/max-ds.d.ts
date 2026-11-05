@@ -38,8 +38,32 @@ declare module "@maxebina/max-ds" {
     badge?: string;
     ctaText?: string;
     href?: string;
+    onClick?: () => void;
   }
   export const ServiceCard: (props: ServiceCardProps) => ReactNode;
+
+  export interface ModalProps {
+    open?: boolean;
+    onClose?: () => void;
+    title?: string;
+    image?: string;
+    size?: "sm" | "md" | "lg";
+    children?: ReactNode;
+    actions?: { label: string; href?: string; onClick?: () => void; variant?: "primary" | "secondary"; target?: "_blank" | "_self" }[];
+  }
+  export const Modal: (props: ModalProps) => ReactNode;
+
+  export interface DrawerProps {
+    open?: boolean;
+    onClose?: () => void;
+    title?: string;
+    description?: string;
+    disclaimer?: string;
+    children?: ReactNode;
+    width?: "sm" | "md" | "lg" | "xl" | "half" | "threequarter";
+    actions?: { label: string; href?: string; onClick?: () => void; variant?: "primary" | "secondary"; target?: "_blank" | "_self" }[];
+  }
+  export const Drawer: (props: DrawerProps) => ReactNode;
 
   export interface TestimonialCardProps {
     name: string;
@@ -77,9 +101,17 @@ declare module "@maxebina/max-ds" {
     social?: { platform: string; href: string; icon: ReactNode }[];
     copyright?: string;
     onLinkClick?: (label: string, href: string) => void;
+    linksClassName?: string;
   }
   export const Footer: (props: FooterProps) => ReactNode;
 
-  export const WhatsAppFloat: () => ReactNode;
+  export const WhatsAppFloat: (props?: { phone?: string; message?: string }) => ReactNode;
+  export interface ScrollToTopProps {
+    targetId?: string;
+    showAfter?: number;
+    offset?: number;
+    className?: string;
+  }
+  export const ScrollToTop: (props?: ScrollToTopProps) => ReactNode;
   export const ParticlesBackground: (props?: { className?: string }) => ReactNode;
 }
