@@ -69,7 +69,7 @@ export default function App() {
             <ServiceCard title="SaaS" description="Plataformas web sob medida para escalar seu modelo de negócio." icon="Code2" ctaText="Saiba mais" href="#saas" />
             <ServiceCard title="CRM" description="Gestão inteligente de clientes e automação de vendas." icon="Bot" ctaText="Saiba mais" href="#crm" />
             <ServiceCard title="Tráfego Pago" description="Investimento estratégico em mídia com ROI mensurável." icon="Megaphone" ctaText="Saiba mais" href="#trafego" />
-            <ServiceCard title="Automa��o WhatsApp" description="Fluxos automatizados que vendem 24h por dia." icon="Workflow" badge="Novo" ctaText="Saiba mais" href="#automacao" />
+            <ServiceCard title="Automação WhatsApp" description="Fluxos automatizados que vendem 24h por dia." icon="Workflow" badge="Novo" ctaText="Saiba mais" href="#automacao" />
           </div>
         </div>
       </section>
