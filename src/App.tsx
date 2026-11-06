@@ -3,6 +3,7 @@ import { Navbar, HeroSection, SectionHeader, ServiceCard,
 TestimonialCard, AnimatedCounter, FAQ, Footer, WhatsAppFloat, ScrollToTop, Modal, Drawer } from
 "./components/ds-components";
 import ContactForm from "./components/ContactForm";
+import { useSectionSeo } from "./seo";
 import { Layout, TrendingUp, Star, Clock } from "lucide-react";
 
 const heroLogo = (
@@ -129,6 +130,7 @@ const legalDocs: Record<LegalDocId, LegalDoc> = {
 };
 
 export default function App() {
+  useSectionSeo();
   const [modalService, setModalService] = useState<string | null>(null);
   const [legalDoc, setLegalDoc] = useState<LegalDocId | null>(null);
   const selectedLegal = legalDoc ? legalDocs[legalDoc] : null;

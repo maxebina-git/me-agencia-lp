@@ -1,0 +1,36 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="top" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8f6424"/>
+      <stop offset="1" stop-color="#06B6D4"/>
+    </linearGradient>
+    <radialGradient id="glowCyan" cx="0.85" cy="0.15" r="0.55">
+      <stop offset="0" stop-color="#06B6D4" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#06B6D4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowGold" cx="0.08" cy="0.95" r="0.5">
+      <stop offset="0" stop-color="#8f6424" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#8f6424" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#17120e"/>
+  <rect width="1200" height="630" fill="url(#glowCyan)"/>
+  <rect width="1200" height="630" fill="url(#glowGold)"/>
+  <rect width="1200" height="6" fill="url(#top)"/>
+
+  <g transform="translate(72 48) scale(0.62)" fill="#b8833a">
+    <path d="M182 19.333H116V33.833H182V53.167H116V67.667H182V87H111.837L95 70.7246V16.2754L111.837 0H182V19.333Z"/>
+    <path d="M67.667 87V21H53.167L53.167 87H33.833L33.833 21H19.333L19.333 87H0L3.06693e-06 16.8369L16.2754 0L70.7246 2.38005e-06L87 16.8369V87H67.667Z"/>
+  </g>
+  <text x="208" y="82" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#F6EEE7">Marketing Digital</text>
+  <text x="940" y="78" font-family="Arial, sans-serif" font-size="20" fill="#F6EEE7" opacity="0.7">maxebina.com.br</text>
+
+  <rect x="72" y="190" width="300" height="38" rx="19" fill="none" stroke="#06B6D4" stroke-width="2"/>
+  <text x="92" y="214" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#06B6D4">TECNOLOGIA QUE GERA RESULTADO</text>
+
+  <text x="70" y="314" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#F6EEE7">Transforme sua empresa</text>
+  <text x="70" y="388" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#F6EEE7">com <tspan fill="#06B6D4">tecnologia</tspan></text>
+
+  <text x="72" y="440" font-family="Arial, sans-serif" font-size="23" fill="#F6EEE7" opacity="0.85">Sites · Landing Pages · SaaS · CRM · Tráfego Pago · Automação de WhatsApp</text>
+  <text x="72" y="474" font-family="Arial, sans-serif" font-size="23" fill="#F6EEE7" opacity="0.6">Presença digital profissional que converte visitantes em clientes.</text>
+</svg>
