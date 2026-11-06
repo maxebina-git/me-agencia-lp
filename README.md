@@ -42,4 +42,11 @@ Os secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` e `FTP_PORT` ficam em Se
 
 ## Atualização do design system
 
-O Dependabot está configurado (`.github/dependabot.yml`) para abrir PRs diários quando sai uma versão nova de `@maxebina/max-ds`. O deploy só acontece após o merge do PR na `main`.
+Bumps de `@maxebina/max-ds` são manuais por PR (sem Dependabot — `.github/dependabot.yml` removido para PRs imediatas). O fluxo completo está no ADR-004 do repo DS (`docs/ADR-004-deploy-pipeline.md`). Comando contingente se o agente travar:
+
+```
+/ds-bump 1.0.17
+Publica o DS 1.0.17 no npm e cria a PR manual de bump na LP (branch chore/bump-max-ds-1.0.17, sem Dependabot). Para antes do merge (ADR-004).
+```
+
+O deploy só acontece após o merge do PR na `main`.
