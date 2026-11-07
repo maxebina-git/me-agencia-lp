@@ -40,47 +40,47 @@ const services: ServiceInfo[] = [
   {
     id: "sites",
     title: "Sites Institucionais",
-    description: "Presença digital profissional que converte visitantes em clientes.",
+    description: "Sua empresa merece mais do que um perfil nas redes sociais. Conquiste sua casa digital própria, transmita autoridade e venda 24 horas por dia.",
     icon: "Globe",
     badge: "Popular",
-    details: ["Design moderno e responsivo em todos os dispositivos", "Carregamento rápido e SEO otimizado", "Formulários e CTAs que direcionam para contato", "Hospedagem, domínio e suporte inclusos"],
+    details: ["Imagine ter um vendedor de elite que apresenta sua empresa com perfeição, a qualquer hora do dia ou da noite, sem cansar e sem pedir férias. É exatamente isso que um site profissional faz pelo seu negócio. Desenvolvemos um design moderno que se adapta perfeitamente a qualquer tela, carregando na velocidade da luz para garantir que o Google te encontre e que nenhum cliente desista de esperar. Mais do que bonito, seu site terá caminhos estratégicos e formulários que transformam curiosos em contatos reais prontos para negociar. E a melhor parte? Você não precisa se preocupar com a parte técnica: hospedagem, domínio e suporte completo já estão inclusos. É só focar em atender bem enquanto nós cuidamos da sua presença digital."],
   },
   {
     id: "landing-pages",
     title: "Landing Pages",
-    description: "Páginas de alta conversão para campanhas de tráfego pago.",
+    description: "Pare de queimar verba em anúncios. Transforme cada clique em um lead qualificado ou em uma venda direta e previsível.",
     icon: "Layout",
     badge: "+40% leads",
-    details: ["Copy persuasiva focada em conversão", "Carregamento ultrarrápido para anúncios", "Testes A/B e rastreamento completos", "Integração com CRM e pixels"],
+    details: ["Imagine direcionar seus anúncios para uma página que realmente vende, em vez de apenas 'mostrar' sua marca. Uma Landing Page é o motor de conversão que transforma cada clique em um lead qualificado. Criamos textos persuasivos que tocam na dor do seu cliente e o levam à ação imediata, com carregamento instantâneo para que você não perca ninguém na espera. Além disso, aplicamos rastreamento preciso e testes constantes para garantir que cada real investido tenha o máximo de retorno. Tudo se integra ao seu CRM, permitindo que você saiba exatamente a origem de cada cliente e escale seu negócio com total previsibilidade."],
   },
   {
     id: "saas",
     title: "SaaS",
-    description: "Plataformas web sob medida para escalar seu modelo de negócio.",
+    description: "Chega de depender de sistemas engessados. Tenha uma plataforma sob medida que cresce junto com o seu negócio, sem limites.",
     icon: "Code2",
-    details: ["Arquitetura escalável e segura", "Painel administrativo completo", "Planos, billing e automações", "Suporte e evolução contínua"],
+    details: ["Imagine ter um sistema que funciona exatamente como sua empresa pensa, em vez de obrigá-la a se adaptar a ferramentas genéricas. Uma plataforma sob medida é o motor que elimina processos manuais, automatiza cobranças e permite que você escale sem travar. Desenvolvemos com arquitetura sólida para suportar milhares de usuários sem perder performance, com painel administrativo intuitivo que coloca o controle total nas suas mãos. Esqueça a dor de cabeça com planilhas e integrações quebradas: tudo é pensado para simplificar sua operação. E o melhor: você não está preso a um produto estático. Evoluímos junto com você, adicionando funcionalidades conforme seu negócio cresce e novas demandas surgem."],
   },
   {
     id: "crm",
     title: "CRM",
-    description: "Gestão inteligente de clientes e automação de vendas.",
+    description: "Pare de perder vendas por falta de acompanhamento. Centralize seus clientes e transforme o caos comercial em uma máquina de vendas previsível.",
     icon: "Bot",
-    details: ["Funil de vendas visual e automatizado", "Lembretes e follow-ups inteligentes", "Relatórios e previsões de receita", "Integrações com WhatsApp e e-mail"],
+    details: ["Imagine saber exatamente em que etapa cada cliente está e o que precisa ser feito para fechar a venda. Nosso CRM transforma a bagunça de planilhas e anotações soltas em um funil visual e automatizado, onde nenhum lead é esquecido. Configuramos lembretes e follow-ups inteligentes que trabalham por você, garantindo que sua equipe aja no momento exato da decisão. Além disso, você terá previsões de receita baseadas em dados reais, eliminando os 'achismos' do seu planejamento. Tudo isso integrado diretamente ao seu WhatsApp e e-mail, centralizando a comunicação e multiplicando suas conversões sem precisar contratar mais gente."],
   },
   {
     id: "trafego",
     title: "Tráfego Pago",
-    description: "Investimento estratégico em mídia com ROI mensurável.",
+    description: "Pare de adivinhar e comece a escalar. Transforme cada real investido em clientes novos, previsíveis e com retorno mensurável.",
     icon: "Megaphone",
-    details: ["Gestão de campanhas no Meta e Google Ads", "Segmentação precisa do público ideal", "Relatórios claros de retorno", "Otimização contínua de criativos"],
+    details: ["Imagine ter o controle absoluto sobre o crescimento do seu negócio, sabendo exatamente quanto custa adquirir um novo cliente. Gerenciamos suas campanhas no Google e Meta com foco obsessivo em lucro, eliminando métricas de vaidade que não pagam contas. Utilizamos uma segmentação cirúrgica para garantir que seu anúncio apareça apenas para quem tem real intenção de compra. Você recebe relatórios transparentes que provam o retorno real do investimento, com otimização constante para reduzir custos e mensurar o aumento de leads de forma isolada e clara."],
   },
   {
     id: "automacao",
     title: "Automação WhatsApp",
-    description: "Fluxos automatizados que vendem 24h por dia.",
+    description: "Pare de perder vendas por demora no atendimento. Tenha um vendedor incansável que responde, qualifica e fecha pedidos 24 horas por dia.",
     icon: "Workflow",
     badge: "Novo",
-    details: ["Atendimento automático 24h por dia", "Qualificação de leads sem esforço", "Mensagens personalizadas por etapa", "Integração com CRM e pagamentos"],
+    details: ["Imagine acordar com pedidos fechados enquanto você dormia. Nossa automação transforma seu WhatsApp em uma máquina de vendas que responde instantaneamente, qualifica leads automaticamente e entrega ao seu time apenas quem está pronto para comprar. Criamos fluxos personalizados que guiam o cliente do primeiro 'oi' até o pagamento, integrando perfeitamente com seu cardápio online, CRM e sistemas de pagamento. Tudo funciona 24 horas por dia, 7 dias por semana, sem custos adicionais de folha e sem perder a humanização no momento certo. É como ter uma equipe de vendas completa trabalhando no piloto automático, multiplicando seu faturamento sem aumentar sua estrutura."],
   },
 ];
 
@@ -223,12 +223,12 @@ export default function App() {
             subtitle="Cada serviço é pensado para acelerar o crescimento do seu negócio com tecnologia de ponta."
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <ServiceCard title="Sites Institucionais" description="Presença digital profissional que converte visitantes em clientes." badge="Popular" icon="Globe" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Sites Institucionais")} />
-            <ServiceCard title="Landing Pages" description="Páginas de alta conversão para campanhas de tráfego pago." badge="+40% leads" icon="Layout" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Landing Pages")} />
-            <ServiceCard title="SaaS" description="Plataformas web sob medida para escalar seu modelo de negócio." icon="Code2" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("SaaS")} />
-            <ServiceCard title="CRM" description="Gestão inteligente de clientes e automação de vendas." icon="Bot" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("CRM")} />
-            <ServiceCard title="Tráfego Pago" description="Investimento estratégico em mídia com ROI mensurável." icon="Megaphone" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Tráfego Pago")} />
-            <ServiceCard title="Automação WhatsApp" description="Fluxos automatizados que vendem 24h por dia." badge="Novo" icon="Workflow" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Automação WhatsApp")} />
+            <ServiceCard title="Sites Institucionais" description="Sua empresa merece mais do que um perfil nas redes sociais. Conquiste sua casa digital própria, transmita autoridade e venda 24 horas por dia." badge="Popular" icon="Globe" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Sites Institucionais")} />
+            <ServiceCard title="Landing Pages" description="Pare de queimar verba em anúncios. Transforme cada clique em um lead qualificado ou em uma venda direta e previsível." badge="+40% leads" icon="Layout" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Landing Pages")} />
+            <ServiceCard title="SaaS" description="Chega de depender de sistemas engessados. Tenha uma plataforma sob medida que cresce junto com o seu negócio, sem limites." icon="Code2" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("SaaS")} />
+            <ServiceCard title="CRM" description="Pare de perder vendas por falta de acompanhamento. Centralize seus clientes e transforme o caos comercial em uma máquina de vendas previsível." icon="Bot" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("CRM")} />
+            <ServiceCard title="Tráfego Pago" description="Pare de adivinhar e comece a escalar. Transforme cada real investido em clientes novos, previsíveis e com retorno mensurável." icon="Megaphone" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Tráfego Pago")} />
+            <ServiceCard title="Automação WhatsApp" description="Pare de perder vendas por demora no atendimento. Tenha um vendedor incansável que responde, qualifica e fecha pedidos 24 horas por dia." badge="Novo" icon="Workflow" ctaText="Saiba mais" href="#contato" onClick={() => setModalService("Automação WhatsApp")} />
           </div>
         </div>
       </section>
